@@ -86,43 +86,52 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Full Video, Tidak Kabur) -->
+    <!-- HERO SECTION (Full Video) -->
     <section id="home" class="relative w-full h-screen overflow-hidden bg-lake-blue">
-        <!-- Video Background Cerah -->
         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
             <source src="https://github.com/fauzanbunz/web-babes/raw/main/download.m4v" type="video/mp4">
         </video>
-        
-        <!-- Gelombang Pemisah ke Section Bawah -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] md:h-[150px]">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.3,191.2,97.8,236.4,81.71,279.7,71.21,321.39,56.44Z" class="fill-vanilla-cream dark:fill-dark-bg"></path>
-            </svg>
-        </div>
     </section>
 
-    <!-- INTRODUCTION SECTION (Teks di bawah Video) -->
-    <section id="introduction" class="relative w-full bg-vanilla-cream dark:bg-dark-bg pt-10 pb-20 flex flex-col items-center justify-center px-4 text-center z-20">
-        <!-- Judul Utama -->
-        <h1 class="font-display text-6xl md:text-8xl text-lake-blue dark:text-pale-marigold drop-shadow-sm mb-4 tracking-wider animate-float">
-            BABES in the HOOD
-        </h1>
+    <!-- INTRODUCTION SECTION (Gambar Overlay Menyatu dengan Video) -->
+    <section id="introduction" class="relative w-full min-h-[80vh] flex flex-col items-center justify-center px-4 text-center z-20 -mt-40 md:-mt-64">
         
-        <!-- Subtitle -->
-        <p class="text-xl md:text-3xl text-powder-pink dark:text-pastel-turquoise font-black mb-10 max-w-2xl uppercase tracking-widest">
-            Welcome To Our Tropical Beach Party
-        </p>
+        <!-- Gambar Beach2 dengan Gradient Mask -->
+        <!-- Masking membuat bagian atas gambar transparan dan memudar jadi utuh ke bawah -->
+        <div class="absolute inset-0 w-full h-full -z-10 bg-vanilla-cream dark:bg-dark-bg" style="mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);">
+            <img src="https://github.com/fauzanbunz/web-babes/raw/main/beach2.jpg" alt="Beach View" class="absolute inset-0 w-full h-full object-cover opacity-90 dark:opacity-70">
+        </div>
+
+        <!-- Area Teks dan Tombol -->
+        <div class="relative z-10 pt-40 md:pt-64 pb-32">
+            <!-- Judul Utama -->
+            <h1 class="font-display text-6xl md:text-8xl text-lake-blue dark:text-pale-marigold drop-shadow-[0_4px_4px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] mb-4 tracking-wider animate-float">
+                BABES in the HOOD
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-xl md:text-3xl text-slate-800 dark:text-pastel-turquoise font-black mb-10 max-w-2xl uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                Welcome To Our Tropical Beach Party
+            </p>
+            
+            <!-- Call to Action -->
+            <a href="#blueprint" class="inline-block px-10 py-5 bg-pale-marigold hover:bg-lake-blue text-slate-900 hover:text-vanilla-cream text-xl font-black rounded-full transition-all duration-300 transform hover:scale-110 hover:-rotate-2 shadow-[0_8px_0_0_#008B9B] hover:shadow-[0_4px_0_0_#F8C25B] hover:translate-y-1 border-2 border-slate-900 dark:border-transparent">
+                EXPLORE NOW 🏄‍♀️
+            </a>
+        </div>
         
-        <!-- Call to Action -->
-        <a href="#blueprint" class="px-10 py-5 bg-pale-marigold hover:bg-lake-blue text-slate-900 hover:text-vanilla-cream text-xl font-black rounded-full transition-all duration-300 transform hover:scale-110 hover:-rotate-2 shadow-[0_8px_0_0_#008B9B] hover:shadow-[0_4px_0_0_#F8C25B] hover:translate-y-1">
-            EXPLORE NOW 🏄‍♀️
-        </a>
+        <!-- Gelombang Pemisah ke Section Blueprint -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] md:h-[150px]">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.3,191.2,97.8,236.4,81.71,279.7,71.21,321.39,56.44Z" class="fill-pastel-turquoise dark:fill-dark-surface"></path>
+            </svg>
+        </div>
     </section>
 
     <!-- BLUEPRINT SECTION -->
     <section id="blueprint" class="py-24 bg-pastel-turquoise dark:bg-dark-surface relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="font-display text-5xl md:text-7xl text-vanilla-cream mb-12">The Blueprint</h2>
+            <h2 class="font-display text-5xl md:text-7xl text-vanilla-cream mb-12 drop-shadow-md">The Blueprint</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="bg-white/80 dark:bg-dark-bg p-8 rounded-3xl shadow-xl backdrop-blur-sm border-4 border-vanilla-cream transform hover:-translate-y-2 transition-transform">
@@ -198,7 +207,6 @@
         var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         var themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Check current theme on load
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             themeToggleLightIcon.classList.remove('hidden');
             document.documentElement.classList.add('dark');
