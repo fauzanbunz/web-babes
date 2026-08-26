@@ -1,15 +1,22 @@
-<!-- ... existing code ... -->
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth light">
 <head>
-<!-- ... existing code ... -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BABES in the HOOD</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
-            darkMode: 'class', // Enable class-based dark mode
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -18,25 +25,22 @@
                         'vanilla-cream': '#F4DDC4',
                         'lake-blue': '#008B9B',
                         'pale-marigold': '#F8C25B',
-                        // Dark mode specific colors
                         'dark-bg': '#1a202c',
                         'dark-surface': '#2d3748',
                         'dark-text': '#e2e8f0',
                     },
                     fontFamily: {
                         'display': ['"Fredoka One"', 'cursive'],
-                        'body': ['Nunito', 'sans-serif'],
+                        'body': ['"Nunito"', 'sans-serif'],
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
-                        'wave': 'wave 5s linear infinite',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 8s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
                         wave: {
                             '0%': { transform: 'translateX(0)' },
@@ -48,387 +52,174 @@
         }
     </script>
     <style>
-        body {
-            overflow-x: hidden;
-            background-color: #F4DDC4; /* Vanilla Cream Base */
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Dark Mode Base Styles */
-        html.dark body {
-            background-color: #1a202c; /* Tailwind gray-900 */
-        }
-
-        /* Video Background Placeholder Style */
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .video-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(150, 198, 199, 0.4), rgba(244, 221, 196, 0.8)); /* Turquoise to Cream gradient overlay */
-            transition: background 0.3s ease;
-        }
-
-        html.dark .video-container::after {
-            background: linear-gradient(to bottom, rgba(26, 32, 44, 0.7), rgba(26, 32, 44, 0.9));
-        }
-
-        /* Mock Video Background (using image as placeholder) */
-        .mock-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .nav-glass {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        html.dark .nav-glass {
-            background: rgba(45, 55, 72, 0.6); /* Darker glass effect */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Smooth transition for theme toggle icon */
-        #theme-toggle svg {
-            transition: transform 0.5s ease, opacity 0.3s ease;
-        }
+        /* Transisi halus untuk Dark Mode */
+        body { transition: background-color 0.3s, color 0.3s; }
     </style>
 </head>
-<body class="font-body text-gray-800 dark:text-dark-text antialiased selection:bg-powder-pink selection:text-white">
+<body class="font-body bg-vanilla-cream text-slate-800 dark:bg-dark-bg dark:text-dark-text antialiased">
 
-    <nav class="nav-glass fixed w-full z-50 py-4 px-6 md:px-12 flex justify-between items-center" id="navbar">
-        <a href="#" class="font-display text-2xl text-lake-blue dark:text-powder-pink tracking-wider flex items-center gap-2">
-            <!-- Simple SVG Sun Icon -->
-<!-- ... existing code ... -->
-        </a>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-6 lg:space-x-10 font-bold text-lake-blue dark:text-vanilla-cream items-center">
-            <a href="#home" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors px-2 py-1 rounded-lg hover:bg-white/50 dark:hover:bg-black/20">Home</a>
-            <a href="#blueprint" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors px-2 py-1 rounded-lg hover:bg-white/50 dark:hover:bg-black/20">Blueprint</a>
-            <a href="#token" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors px-2 py-1 rounded-lg hover:bg-white/50 dark:hover:bg-black/20">$BABES</a>
-            <a href="#team" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors px-2 py-1 rounded-lg hover:bg-white/50 dark:hover:bg-black/20">Team</a>
-            
-            <!-- Theme Toggle Button (Desktop) -->
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/50 dark:hover:bg-black/20 focus:outline-none transition-colors text-lake-blue dark:text-pale-marigold ml-4" aria-label="Toggle Dark Mode">
-                <!-- Sun Icon (shows in dark mode) -->
-                <svg id="theme-toggle-light-icon" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.293a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM16 10a1 1 0 011 1h1a1 1 0 110-2h-1a1 1 0 01-1 1zm-4.22 4.293a1 1 0 010 1.415l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zm-4.22-2.293a1 1 0 01-1.415 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM4 10a1 1 0 01-1-1H2a1 1 0 110 2h1a1 1 0 011-1zm2.293-4.22a1 1 0 010-1.415l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.415 0zM10 5a5 5 0 100 10 5 5 0 000-10z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                <!-- Moon Icon (shows in light mode) -->
-                <svg id="theme-toggle-dark-icon" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            </button>
-        </div>
-
-        <!-- Mobile Controls -->
-        <div class="md:hidden flex items-center space-x-2">
-             <!-- Theme Toggle Button (Mobile) -->
-             <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-white/50 dark:hover:bg-black/20 focus:outline-none transition-colors text-lake-blue dark:text-pale-marigold" aria-label="Toggle Dark Mode">
-                <svg id="theme-toggle-light-icon-mobile" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.293a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM16 10a1 1 0 011 1h1a1 1 0 110-2h-1a1 1 0 01-1 1zm-4.22 4.293a1 1 0 010 1.415l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zm-4.22-2.293a1 1 0 01-1.415 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM4 10a1 1 0 01-1-1H2a1 1 0 110 2h1a1 1 0 011-1zm2.293-4.22a1 1 0 010-1.415l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.415 0zM10 5a5 5 0 100 10 5 5 0 000-10z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                <svg id="theme-toggle-dark-icon-mobile" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            </button>
-            <!-- Mobile Menu Button -->
-            <button class="text-lake-blue dark:text-vanilla-cream focus:outline-none p-2" id="mobile-menu-btn">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/70 dark:bg-dark-bg/80 border-b border-pastel-turquoise/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="font-display text-3xl text-lake-blue dark:text-pale-marigold hover:scale-105 transition-transform">
+                        🌴 BABES
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="font-bold text-lg hover:text-lake-blue dark:hover:text-pastel-turquoise transition-colors">Home</a>
+                    <a href="#blueprint" class="font-bold text-lg hover:text-lake-blue dark:hover:text-pastel-turquoise transition-colors">Blueprint</a>
+                    <a href="#babes" class="font-bold text-lg hover:text-lake-blue dark:hover:text-pastel-turquoise transition-colors">$BABES</a>
+                    <a href="#team" class="font-bold text-lg hover:text-lake-blue dark:hover:text-pastel-turquoise transition-colors">Team</a>
+                    
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 bg-lake-blue text-vanilla-cream rounded-full hover:bg-pale-marigold transition-colors shadow-md">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-vanilla-cream/95 dark:bg-dark-bg/95 z-40 hidden flex-col items-center justify-center space-y-8 text-2xl font-display text-lake-blue dark:text-vanilla-cream transform transition-transform duration-300 translate-x-full">
-        <a href="#home" class="mobile-link hover:text-powder-pink dark:hover:text-pale-marigold">Home</a>
-        <a href="#blueprint" class="mobile-link hover:text-powder-pink dark:hover:text-pale-marigold">Blueprint</a>
-        <a href="#token" class="mobile-link hover:text-powder-pink dark:hover:text-pale-marigold">$BABES</a>
-        <a href="#team" class="mobile-link hover:text-powder-pink dark:hover:text-pale-marigold">Team</a>
-    </div>
-
-    <main class="parallax-wrapper">
+    <!-- HERO SECTION (Full Video, Tidak Kabur) -->
+    <section id="home" class="relative w-full h-screen overflow-hidden bg-lake-blue">
+        <!-- Video Background Cerah -->
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="https://github.com/fauzanbunz/web-babes/raw/main/download.m4v" type="video/mp4">
+        </video>
         
-        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-            
-            <!-- Video Background Placeholder (Using provided image) -->
-            <div class="video-container">
-                <!-- Replace src with your looping video URL later -->
-                <img src="9714bdf1d1e27d8a133e591788c1dc70.jpg" alt="Beach Background" class="mock-video">
-            </div>
+        <!-- Gelombang Pemisah ke Section Bawah -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] md:h-[150px]">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.3,191.2,97.8,236.4,81.71,279.7,71.21,321.39,56.44Z" class="fill-vanilla-cream dark:fill-dark-bg"></path>
+            </svg>
+        </div>
+    </section>
 
-            <div class="relative z-10 text-center flex flex-col items-center px-4 mt-16 w-full max-w-4xl">
-                <!-- Main Title -->
-                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-vanilla-cream drop-shadow-[0_4px_8px_rgba(0,139,155,0.8)] dark:drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] mb-6 animate-float tracking-wide">
-                    BABES in the HOOD
-                </h1>
-                
-                <!-- Introduction Text Box -->
-                <div class="bg-white/20 dark:bg-black/40 p-6 md:p-8 rounded-[2.5rem] backdrop-blur-md border-2 border-white/40 dark:border-white/10 mb-8 shadow-2xl">
-                    <p class="text-xl md:text-2xl text-lake-blue dark:text-vanilla-cream font-bold mb-4 font-display">
-                        Welcome to the ultimate beach club.
-                    </p>
-                    <p class="text-lg md:text-xl text-gray-800 dark:text-gray-200 font-bold">
-                        Sun, Sand, and Blockchain. Dive into the coolest community on the beach where good vibes meet Web3 innovation. This is your introduction to paradise.
-                    </p>
+    <!-- INTRODUCTION SECTION (Teks di bawah Video) -->
+    <section id="introduction" class="relative w-full bg-vanilla-cream dark:bg-dark-bg pt-10 pb-20 flex flex-col items-center justify-center px-4 text-center z-20">
+        <!-- Judul Utama -->
+        <h1 class="font-display text-6xl md:text-8xl text-lake-blue dark:text-pale-marigold drop-shadow-sm mb-4 tracking-wider animate-float">
+            BABES in the HOOD
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-xl md:text-3xl text-powder-pink dark:text-pastel-turquoise font-black mb-10 max-w-2xl uppercase tracking-widest">
+            Welcome To Our Tropical Beach Party
+        </p>
+        
+        <!-- Call to Action -->
+        <a href="#blueprint" class="px-10 py-5 bg-pale-marigold hover:bg-lake-blue text-slate-900 hover:text-vanilla-cream text-xl font-black rounded-full transition-all duration-300 transform hover:scale-110 hover:-rotate-2 shadow-[0_8px_0_0_#008B9B] hover:shadow-[0_4px_0_0_#F8C25B] hover:translate-y-1">
+            EXPLORE NOW 🏄‍♀️
+        </a>
+    </section>
+
+    <!-- BLUEPRINT SECTION -->
+    <section id="blueprint" class="py-24 bg-pastel-turquoise dark:bg-dark-surface relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="font-display text-5xl md:text-7xl text-vanilla-cream mb-12">The Blueprint</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white/80 dark:bg-dark-bg p-8 rounded-3xl shadow-xl backdrop-blur-sm border-4 border-vanilla-cream transform hover:-translate-y-2 transition-transform">
+                    <div class="text-6xl mb-4">🏖️</div>
+                    <h3 class="font-display text-3xl text-lake-blue dark:text-pale-marigold mb-4">Phase 1</h3>
+                    <p class="font-bold">Beach party initiation, community building, and good vibes only.</p>
                 </div>
-
-                <!-- Call to Action -->
-                <a href="#blueprint" class="group relative px-8 py-4 font-bold text-lake-blue dark:text-dark-bg text-xl rounded-full bg-vanilla-cream dark:bg-powder-pink overflow-hidden shadow-[0_8px_0_#96C6C7] dark:shadow-[0_8px_0_#d49ba0] hover:shadow-[0_4px_0_#96C6C7] dark:hover:shadow-[0_4px_0_#d49ba0] hover:translate-y-1 transition-all">
-                    <span class="relative z-10">Explore the Blueprint</span>
-                    <div class="absolute inset-0 h-full w-0 bg-pale-marigold dark:bg-vanilla-cream transition-all duration-300 ease-out group-hover:w-full z-0"></div>
-                </a>
-            </div>
-
-            <!-- Bottom Wave Transition to Blueprint section -->
-            <div class="wave-bottom text-vanilla-cream dark:text-dark-bg z-20">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,121.23,200.7,112.5,241.1,107.57,281.33,88.7,321.39,56.44Z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </section>
-
-        <section id="blueprint" class="relative min-h-screen bg-vanilla-cream dark:bg-dark-bg py-24 px-6 transition-colors duration-300">
-            <div class="max-w-5xl mx-auto relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-4xl md:text-6xl text-lake-blue dark:text-vanilla-cream mb-4">The Blueprint</h2>
-                    <p class="text-gray-600 dark:text-gray-400 font-bold text-xl">Our plan to take over the beach.</p>
+                <!-- Card 2 -->
+                <div class="bg-white/80 dark:bg-dark-bg p-8 rounded-3xl shadow-xl backdrop-blur-sm border-4 border-vanilla-cream transform hover:-translate-y-2 transition-transform md:mt-12">
+                    <div class="text-6xl mb-4">🍹</div>
+                    <h3 class="font-display text-3xl text-lake-blue dark:text-pale-marigold mb-4">Phase 2</h3>
+                    <p class="font-bold">Serving the sweetest utilities and expanding our coastal empire.</p>
                 </div>
-
-                <!-- Timeline / Roadmap -->
-                <div class="relative wrap overflow-hidden p-10 h-full">
-                    <!-- Center Line -->
-                    <div class="absolute border-opacity-20 border-lake-blue dark:border-powder-pink h-full border-4 left-1/2 transform -translate-x-1/2 hidden md:block rounded-full"></div>
-                    
-                    <!-- Phase 1 -->
-                    <div class="mb-12 flex justify-between items-center w-full right-timeline">
-                        <div class="order-1 w-5/12 hidden md:block"></div>
-                        <div class="z-20 flex items-center order-1 bg-pale-marigold shadow-xl w-16 h-16 rounded-full border-4 border-white dark:border-dark-bg justify-center absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                            <span class="font-display text-white text-2xl">1</span>
-                        </div>
-                        <div class="order-1 bg-white dark:bg-dark-surface rounded-3xl shadow-lg w-full md:w-5/12 px-6 py-8 ml-8 md:ml-0 border-b-4 border-pale-marigold hover:-translate-y-2 transition-transform relative">
-                            <!-- Little decorative blob -->
-                            <div class="absolute -top-4 -right-4 w-12 h-12 bg-powder-pink rounded-full mix-blend-multiply dark:mix-blend-normal opacity-50 blob"></div>
-                            
-                            <h3 class="font-display text-2xl text-lake-blue dark:text-powder-pink mb-3">Beach Setup</h3>
-                            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300 font-bold">
-                                <li class="flex items-center gap-2"><span>🥥</span> Community Building</li>
-                                <li class="flex items-center gap-2"><span>🥥</span> Art Generation & Refinement</li>
-                                <li class="flex items-center gap-2"><span>🥥</span> Smart Contract Deployment</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Phase 2 -->
-                    <div class="mb-12 flex justify-between flex-row-reverse items-center w-full left-timeline">
-                        <div class="order-1 w-5/12 hidden md:block"></div>
-                        <div class="z-20 flex items-center order-1 bg-powder-pink shadow-xl w-16 h-16 rounded-full border-4 border-white dark:border-dark-bg justify-center absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                            <span class="font-display text-white text-2xl">2</span>
-                        </div>
-                        <div class="order-1 bg-white dark:bg-dark-surface rounded-3xl shadow-lg w-full md:w-5/12 px-6 py-8 mr-8 md:mr-0 border-b-4 border-powder-pink hover:-translate-y-2 transition-transform text-left md:text-right relative">
-                            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-pastel-turquoise rounded-full mix-blend-multiply dark:mix-blend-normal opacity-50 blob" style="animation-delay: 1s;"></div>
-                            
-                            <h3 class="font-display text-2xl text-lake-blue dark:text-pastel-turquoise mb-3">The Drop</h3>
-                            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300 font-bold md:inline-block">
-                                <li class="flex items-center md:justify-end gap-2">Boarding Pass Access <span>🏄‍♀️</span></li>
-                                <li class="flex items-center md:justify-end gap-2">Secondary Market Listing <span>🏄‍♀️</span></li>
-                                <li class="flex items-center md:justify-end gap-2">Holder Verification Setup <span>🏄‍♀️</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Phase 3 -->
-                    <div class="mb-12 flex justify-between items-center w-full right-timeline">
-                        <div class="order-1 w-5/12 hidden md:block"></div>
-                        <div class="z-20 flex items-center order-1 bg-lake-blue shadow-xl w-16 h-16 rounded-full border-4 border-white dark:border-dark-bg justify-center absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                            <span class="font-display text-white text-2xl">3</span>
-                        </div>
-                        <div class="order-1 bg-white dark:bg-dark-surface rounded-3xl shadow-lg w-full md:w-5/12 px-6 py-8 ml-8 md:ml-0 border-b-4 border-lake-blue hover:-translate-y-2 transition-transform relative">
-                            <h3 class="font-display text-2xl text-powder-pink dark:text-pale-marigold mb-3">Pool Party</h3>
-                            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300 font-bold">
-                                <li class="flex items-center gap-2"><span>🍹</span> $BABES Token Launch</li>
-                                <li class="flex items-center gap-2"><span>🍹</span> Staking Mechanics Live</li>
-                                <li class="flex items-center gap-2"><span>🍹</span> Exclusive Merch Drop</li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- Card 3 -->
+                <div class="bg-white/80 dark:bg-dark-bg p-8 rounded-3xl shadow-xl backdrop-blur-sm border-4 border-vanilla-cream transform hover:-translate-y-2 transition-transform md:mt-24">
+                    <div class="text-6xl mb-4">🏄</div>
+                    <h3 class="font-display text-3xl text-lake-blue dark:text-pale-marigold mb-4">Phase 3</h3>
+                    <p class="font-bold">Riding the biggest waves into the Web3 sunset together.</p>
                 </div>
             </div>
-            
-            <!-- Bottom Wave Transition -->
-            <div class="wave-bottom text-powder-pink dark:text-dark-surface z-20">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,121.23,200.7,112.5,241.1,107.57,281.33,88.7,321.39,56.44Z" fill="currentColor"></path>
-                </svg>
+        </div>
+    </section>
+
+    <!-- $BABES SECTION -->
+    <section id="babes" class="py-24 bg-powder-pink dark:bg-dark-bg text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-5xl md:text-7xl text-lake-blue dark:text-vanilla-cream mb-8">Meet $BABES</h2>
+            <p class="text-2xl font-bold text-slate-800 dark:text-pastel-turquoise mb-8">
+                The most refreshing token on the blockchain. 
+            </p>
+            <div class="inline-block bg-vanilla-cream dark:bg-dark-surface rounded-full px-8 py-4 border-4 border-dashed border-lake-blue dark:border-pale-marigold">
+                <span class="font-mono text-xl font-bold text-lake-blue dark:text-pale-marigold">CA: TBA...</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="token" class="relative min-h-screen bg-powder-pink dark:bg-dark-surface py-24 px-6 overflow-hidden flex flex-col items-center justify-center transition-colors duration-300">
-            
-            <!-- Animated Background Elements -->
-            <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10">
-<!-- ... existing code ... -->
-            </div>
-
-            <div class="max-w-4xl w-full mx-auto relative z-10 bg-white/40 dark:bg-dark-bg/60 backdrop-blur-md p-8 md:p-16 rounded-[3rem] border-4 border-white dark:border-gray-700 shadow-2xl text-center">
-                <h2 class="font-display text-5xl md:text-7xl text-white dark:text-powder-pink drop-shadow-md mb-2">$BABES</h2>
-                <h3 class="text-2xl font-bold text-lake-blue dark:text-vanilla-cream mb-8">The Utility Token of the Hood</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-white dark:bg-dark-surface rounded-3xl p-6 shadow-sm border-2 border-vanilla-cream dark:border-gray-700 hover:border-pale-marigold dark:hover:border-pale-marigold transition-colors">
-                        <div class="w-16 h-16 mx-auto bg-pale-marigold dark:bg-gray-800 rounded-full flex items-center justify-center text-3xl mb-4">🛍️</div>
-                        <h4 class="font-display text-xl text-lake-blue dark:text-white mb-2">Merch</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Buy exclusive physical items using $BABES.</p>
+    <!-- TEAM SECTION -->
+    <section id="team" class="py-24 bg-pale-marigold dark:bg-dark-surface">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="font-display text-5xl md:text-7xl text-lake-blue dark:text-vanilla-cream mb-16">The Lifeguards</h2>
+            <div class="flex flex-wrap justify-center gap-12">
+                <!-- Team Member -->
+                <div class="w-64 text-center">
+                    <div class="w-48 h-48 mx-auto bg-lake-blue rounded-full border-8 border-vanilla-cream mb-6 flex items-center justify-center text-7xl shadow-lg transform hover:rotate-12 transition-transform">
+                        😎
                     </div>
-                    <div class="bg-white dark:bg-dark-surface rounded-3xl p-6 shadow-sm border-2 border-vanilla-cream dark:border-gray-700 hover:border-pastel-turquoise dark:hover:border-pastel-turquoise transition-colors">
-                        <div class="w-16 h-16 mx-auto bg-pastel-turquoise dark:bg-gray-800 rounded-full flex items-center justify-center text-3xl mb-4">🎟️</div>
-                        <h4 class="font-display text-xl text-lake-blue dark:text-white mb-2">Events</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Access to IRL beach parties and digital events.</p>
-                    </div>
-                    <div class="bg-white dark:bg-dark-surface rounded-3xl p-6 shadow-sm border-2 border-vanilla-cream dark:border-gray-700 hover:border-powder-pink dark:hover:border-powder-pink transition-colors">
-                        <div class="w-16 h-16 mx-auto bg-powder-pink dark:bg-gray-800 rounded-full flex items-center justify-center text-3xl mb-4">🥩</div>
-                        <h4 class="font-display text-xl text-lake-blue dark:text-white mb-2">Staking</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Stake your Boarding Pass to earn passive $BABES.</p>
-                    </div>
+                    <h3 class="font-display text-3xl text-slate-900 dark:text-vanilla-cream">Cap'n</h3>
+                    <p class="font-bold text-lake-blue dark:text-pastel-turquoise">Founder</p>
                 </div>
-
-                <div class="inline-flex items-center justify-center space-x-2 bg-lake-blue dark:bg-gray-800 text-white px-6 py-3 rounded-full font-bold shadow-lg">
-                    <span>Contract:</span>
-                    <code class="bg-black/20 dark:bg-black/40 px-2 py-1 rounded text-sm text-vanilla-cream">TBA (Launching Soon)</code>
+                <!-- Team Member -->
+                <div class="w-64 text-center">
+                    <div class="w-48 h-48 mx-auto bg-powder-pink rounded-full border-8 border-vanilla-cream mb-6 flex items-center justify-center text-7xl shadow-lg transform hover:-rotate-12 transition-transform">
+                        🎨
+                    </div>
+                    <h3 class="font-display text-3xl text-slate-900 dark:text-vanilla-cream">Artisan</h3>
+                    <p class="font-bold text-lake-blue dark:text-pastel-turquoise">Lead Artist</p>
                 </div>
             </div>
-            
-             <!-- Bottom Wave Transition -->
-             <div class="wave-bottom text-lake-blue dark:text-dark-bg z-20">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="team" class="relative min-h-screen bg-lake-blue dark:bg-dark-bg py-24 px-6 flex flex-col justify-between transition-colors duration-300">
-            
-            <div class="max-w-6xl w-full mx-auto relative z-10 flex-grow">
-                <div class="text-center mb-16">
-                    <h2 class="font-display text-4xl md:text-6xl text-white mb-4">The Lifeguards</h2>
-                    <p class="text-pastel-turquoise dark:text-gray-400 font-bold text-xl">Meet the team keeping the hood safe.</p>
-                </div>
+    <!-- FOOTER -->
+    <footer class="bg-lake-blue text-vanilla-cream py-8 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="font-display text-2xl mb-4">🌴 BABES in the HOOD</p>
+            <p class="font-bold opacity-80">© 2026 All rights reserved.</p>
+        </div>
+    </footer>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Team Member 1 -->
-                    <div class="bg-white/10 dark:bg-dark-surface/50 backdrop-blur rounded-[2rem] p-6 text-center border border-white/20 dark:border-gray-700 hover:bg-white/20 dark:hover:bg-dark-surface transition-all group">
-                        <div class="w-32 h-32 mx-auto bg-vanilla-cream rounded-full mb-4 border-4 border-pale-marigold overflow-hidden relative">
-<!-- ... existing code ... -->
-                        <h3 class="font-display text-2xl text-white mb-1">Sunny</h3>
-                        <p class="text-pale-marigold font-bold text-sm mb-3">Founder / Vision</p>
-                        <div class="flex justify-center space-x-3 text-white dark:text-gray-400">
-                            <a href="#" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 2 -->
-                    <div class="bg-white/10 dark:bg-dark-surface/50 backdrop-blur rounded-[2rem] p-6 text-center border border-white/20 dark:border-gray-700 hover:bg-white/20 dark:hover:bg-dark-surface transition-all group">
-                        <div class="w-32 h-32 mx-auto bg-vanilla-cream rounded-full mb-4 border-4 border-powder-pink overflow-hidden relative">
-<!-- ... existing code ... -->
-                        <h3 class="font-display text-2xl text-white mb-1">Coral</h3>
-                        <p class="text-powder-pink font-bold text-sm mb-3">Lead Artist</p>
-                        <div class="flex justify-center space-x-3 text-white dark:text-gray-400">
-                            <a href="#" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 3 -->
-                    <div class="bg-white/10 dark:bg-dark-surface/50 backdrop-blur rounded-[2rem] p-6 text-center border border-white/20 dark:border-gray-700 hover:bg-white/20 dark:hover:bg-dark-surface transition-all group">
-                        <div class="w-32 h-32 mx-auto bg-vanilla-cream rounded-full mb-4 border-4 border-pastel-turquoise overflow-hidden relative">
-<!-- ... existing code ... -->
-                        <h3 class="font-display text-2xl text-white mb-1">Finn</h3>
-                        <p class="text-pastel-turquoise font-bold text-sm mb-3">Lead Developer</p>
-                        <div class="flex justify-center space-x-3 text-white dark:text-gray-400">
-                            <a href="#" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 4 -->
-                    <div class="bg-white/10 dark:bg-dark-surface/50 backdrop-blur rounded-[2rem] p-6 text-center border border-white/20 dark:border-gray-700 hover:bg-white/20 dark:hover:bg-dark-surface transition-all group">
-                        <div class="w-32 h-32 mx-auto bg-vanilla-cream rounded-full mb-4 border-4 border-vanilla-cream overflow-hidden relative">
-<!-- ... existing code ... -->
-                        <h3 class="font-display text-2xl text-white mb-1">Breeze</h3>
-                        <p class="text-vanilla-cream font-bold text-sm mb-3">Community Manager</p>
-                        <div class="flex justify-center space-x-3 text-white dark:text-gray-400">
-                            <a href="#" class="hover:text-powder-pink dark:hover:text-pale-marigold transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <footer class="mt-20 border-t border-white/20 dark:border-gray-700 pt-8 text-center text-pastel-turquoise dark:text-gray-500 font-bold relative z-10">
-                <div class="flex justify-center space-x-6 mb-4">
-                    <a href="#" class="hover:text-white dark:hover:text-powder-pink transition-colors">Twitter</a>
-                    <a href="#" class="hover:text-white dark:hover:text-powder-pink transition-colors">Discord</a>
-                    <a href="#" class="hover:text-white dark:hover:text-powder-pink transition-colors">OpenSea</a>
-                </div>
-                <p>&copy; 2026 BABES in the HOOD. All rights reserved on the beach.</p>
-            </footer>
-        </section>
-
-    </main>
-
+    <!-- Script for Dark Mode Toggle -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Theme Toggle Logic ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
-            
-            const darkIcon = document.getElementById('theme-toggle-dark-icon');
-            const lightIcon = document.getElementById('theme-toggle-light-icon');
-            
-            const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-            const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        var themeToggleBtn = document.getElementById('theme-toggle');
 
-            // Check for saved user preference, otherwise use system preference
-            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                lightIcon.classList.remove('hidden');
-                lightIconMobile.classList.remove('hidden');
+        // Check current theme on load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+            document.documentElement.classList.add('dark');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
             } else {
-                document.documentElement.classList.remove('dark');
-                darkIcon.classList.remove('hidden');
-                darkIconMobile.classList.remove('hidden');
-            }
-
-            function toggleTheme() {
-                // Toggle icons
-                darkIcon.classList.toggle('hidden');
-                lightIcon.classList.toggle('hidden');
-                darkIconMobile.classList.toggle('hidden');
-                lightIconMobile.classList.toggle('hidden');
-
-                // If is dark mode
                 if (document.documentElement.classList.contains('dark')) {
                     document.documentElement.classList.remove('dark');
                     localStorage.setItem('color-theme', 'light');
@@ -437,78 +228,6 @@
                     localStorage.setItem('color-theme', 'dark');
                 }
             }
-
-            themeToggleBtn.addEventListener('click', toggleTheme);
-            themeToggleBtnMobile.addEventListener('click', toggleTheme);
-            
-            // --- Mobile Menu Toggle ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-                // Simple slide effect by toggling translate
-                setTimeout(() => {
-                    mobileMenu.classList.toggle('translate-x-full');
-                }, 10);
-            });
-
-            // Close mobile menu on link click
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('flex');
-                    }, 300);
-                });
-            });
-
-            // --- Parallax Navbar Effect ---
-            const navbar = document.getElementById('navbar');
-            const parallaxWrapper = document.querySelector('.parallax-wrapper');
-            
-            parallaxWrapper.addEventListener('scroll', () => {
-                if (parallaxWrapper.scrollTop > 50) {
-                    navbar.classList.add('shadow-md');
-                    if (document.documentElement.classList.contains('dark')) {
-                        navbar.style.background = 'rgba(45, 55, 72, 0.9)'; // Darker bg for dark mode
-                    } else {
-                        navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-                    }
-                } else {
-                    navbar.classList.remove('shadow-md');
-                    if (document.documentElement.classList.contains('dark')) {
-                        navbar.style.background = 'rgba(45, 55, 72, 0.6)';
-                    } else {
-                        navbar.style.background = 'rgba(255, 255, 255, 0.4)';
-                    }
-                }
-            });
-
-            // --- Smooth scrolling for anchor links within parallax container ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        // Calculate position relative to the parallax wrapper
-                        const topPos = targetElement.offsetTop;
-                        
-                        parallaxWrapper.scrollTo({
-                            top: topPos,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
         });
     </script>
 </body>
